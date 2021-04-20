@@ -1,6 +1,6 @@
 {
-  "name": "react-native-masked-text-input-example",
-  "description": "Example app for react-native-masked-text-input",
+  "name": "react-native-mask-input-example",
+  "description": "Example app for react-native-mask-input",
   "version": "0.0.1",
   "private": true,
   "scripts": {

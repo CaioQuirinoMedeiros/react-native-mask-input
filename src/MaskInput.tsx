@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { TextInput } from 'react-native';
 
-import type { MaskedTextInputProps } from './MaskedTextInput.types';
+import type { MaskInputProps } from './MaskInput.types';
 import formatWithMask from './formatWithMask';
 
 export default React.forwardRef(function (
-  props: MaskedTextInputProps,
+  props: MaskInputProps,
   ref: React.Ref<TextInput>
 ) {
   const {

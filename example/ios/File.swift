@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  MaskedTextInputExample
+//  MaskInputExample
 //
 
 import Foundation

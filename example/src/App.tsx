@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native';
-import MaskedTextInput, { Masks } from 'react-native-masked-text-input';
+import MaskInput, { Masks } from 'react-native-mask-input';
 
 export default function App() {
   const [cpf, setCpf] = React.useState('');
@@ -17,9 +17,9 @@ export default function App() {
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="handled"
       >
-        <Text style={styles.label}>MaskedTextInput Examples</Text>
+        <Text style={styles.label}>MaskInput Examples</Text>
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.BRL_CPF}
           value={cpf}
           onChangeText={setCpf}
@@ -27,7 +27,7 @@ export default function App() {
           style={styles.inputBasic}
         />
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.BRL_CNPJ}
           keyboardType="numeric"
           placeholderFillCharacter="0"
@@ -36,7 +36,7 @@ export default function App() {
           onChangeText={setCnpj}
         />
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.BRL_PHONE}
           keyboardType="numeric"
           placeholder="Phone custom placeholder"
@@ -45,7 +45,7 @@ export default function App() {
           onChangeText={setPhone}
         />
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.CREDIT_CARD}
           keyboardType="numeric"
           value={creditCard}
@@ -56,7 +56,7 @@ export default function App() {
           }}
         />
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.DATE_DDMMYYYY}
           keyboardType="numeric"
           value={date}
@@ -65,7 +65,7 @@ export default function App() {
           maxLength={undefined}
         />
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.BRL_CURRENCY}
           keyboardType="numeric"
           value={money}
@@ -76,7 +76,7 @@ export default function App() {
           maxLength={undefined}
         />
 
-        <MaskedTextInput
+        <MaskInput
           mask={Masks.BRL_CAR_PLATE}
           value={carPlate}
           autoCapitalize="characters"
