@@ -218,18 +218,18 @@ function MyComponent() {
 }
 ```
 
-| Mask                | Use case                |
-| ------------------- | ----------------------- |
-| Masks.BRL_CAR_PLATE | ABC-1234                |
-| Masks.BRL_CPNJ      | 33.594.232/0001-00      |
-| Masks.BRL_CPF       | 903.549.000-21          |
-| Masks.BRL_CURRENCY  | R\$ 1.234,56            |
-| Masks.BRL_PHONE     | (61) 99966-7746         |
-| Masks.CREDIT_CARD   | 9999 \***\* \*\*** 9999 |
-| Masks.DATE_DDMMYYYY | 12/04/1995              |
-| Masks.DATE_MMDDYYYY | 04/12/1995              |
-| Masks.DATE_YYYYMMDD | 1995/04/12              |
-| Masks.ZIP_CODE      | 71680-345               |
+| Mask                | Use case                    |
+| ------------------- | --------------------------- |
+| Masks.BRL_CAR_PLATE | ABC-1234                    |
+| Masks.BRL_CPNJ      | 33.594.232/0001-00          |
+| Masks.BRL_CPF       | 903.549.000-21              |
+| Masks.BRL_CURRENCY  | R\$ 1.234,56                |
+| Masks.BRL_PHONE     | (61) 99966-7746             |
+| Masks.CREDIT_CARD   | 9999 \*\*\*\* \*\*\*\* 9999 |
+| Masks.DATE_DDMMYYYY | 12/04/1995                  |
+| Masks.DATE_MMDDYYYY | 04/12/1995                  |
+| Masks.DATE_YYYYMMDD | 1995/04/12                  |
+| Masks.ZIP_CODE      | 71680-345                   |
 
 ### `createNumberMask(numberOptions)`
 
