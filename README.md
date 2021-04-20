@@ -1,13 +1,13 @@
-<h1 align="center">React Native Masked Text Input</h1>
+<h1 align="center">React Native Mask Input</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS-brightgreen" />
-  <img src="https://img.shields.io/npm/dm/react-native-masked-text-input" />
-  <img src="https://img.shields.io/github/issues-closed-raw/CaioQuirinoMedeiros/react-native-masked-text-input" />
-  <img src="https://img.shields.io/bundlephobia/min/react-native-masked-text-input" />
-  <img src="https://img.shields.io/npm/types/react-native-masked-text-input" />
-  <img src="https://img.shields.io/npm/v/react-native-masked-text-input" />
-  <img src="https://img.shields.io/github/license/CaioQuirinoMedeiros/react-native-masked-text-input" />
+  <img src="https://img.shields.io/npm/dm/react-native-mask-input" />
+  <img src="https://img.shields.io/github/issues-closed-raw/CaioQuirinoMedeiros/react-native-mask-input" />
+  <img src="https://img.shields.io/bundlephobia/min/react-native-mask-input" />
+  <img src="https://img.shields.io/npm/types/react-native-mask-input" />
+  <img src="https://img.shields.io/npm/v/react-native-mask-input" />
+  <img src="https://img.shields.io/github/license/CaioQuirinoMedeiros/react-native-mask-input" />
 </p>
 
 A simple and effective Text Input with mask for ReactNative on iOS and Android. No fancy stuff, it's basically a JavaScript function that allow you to use custom masks easily.
@@ -27,25 +27,25 @@ A simple and effective Text Input with mask for ReactNative on iOS and Android. 
 ## Installation
 
 ```sh
-npm install react-native-masked-text-input
+npm install react-native-mask-input
 ```
 
 or
 
 ```sh
-yarn add react-native-masked-text-input
+yarn add react-native-mask-input
 ```
 
 ## Usage
 
 ```javascript
-import MaskedTextInput from 'react-native-masked-text-input';
+import MaskInput from 'react-native-mask-input';
 
 function MyComponent() {
   const [phone, setPhone] = React.useState('');
 
   return (
-    <MaskedTextInput
+    <MaskInput
       value={phone}
       onChangeValue={(masked, unmasked) => {
         setPhone(masked); // you can use the unmasked value as well
@@ -107,8 +107,8 @@ That's because the RegExp `/\d/` accepts any digit character (0-9)
 See [EXAMPLE](example)
 
 ```sh
-git clone https://github.com/caioquirinomedeiros/react-native-masked-text-input.git
-cd react-native-masked-text-input/example
+git clone https://github.com/caioquirinomedeiros/react-native-mask-input.git
+cd react-native-mask-input/example
 yarn
 yarn android / yarn ios
 ```
@@ -118,7 +118,7 @@ yarn android / yarn ios
 ## `formatWithMask(options)`
 
 ```javascript
-import { formatWithMask, Masks } from 'react-native-masked-text-input';
+import { formatWithMask, Masks } from 'react-native-mask-input';
 
 const creditCard = '9999999999999999';
 
@@ -147,6 +147,6 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## License
 
-react-native-masked-text-input is released under the MIT license. See [LICENSE](LICENSE) for details.
+react-native-mask-input is released under the MIT license. See [LICENSE](LICENSE) for details.
 
 Any question or support will welcome.

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-masked-text-input",
+  "name": "react-native-mask-input",
   "version": "1.0.0",
   "description": "TextInput with mask for ReactNative on both iOS and Android. Includes obfuscation characters feature.",
   "main": "lib/commonjs/index",
@@ -51,13 +51,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/CaioQuirinoMedeiros/react-native-masked-text-input",
+  "repository": "https://github.com/CaioQuirinoMedeiros/react-native-mask-input",
   "author": "Caio Medeiros <caio.quirino.medeiros@gmail.com> (https://github.com/CaioQuirinoMedeiros)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CaioQuirinoMedeiros/react-native-masked-text-input/issues"
+    "url": "https://github.com/CaioQuirinoMedeiros/react-native-mask-input/issues"
   },
-  "homepage": "https://github.com/CaioQuirinoMedeiros/react-native-masked-text-input#readme",
+  "homepage": "https://github.com/CaioQuirinoMedeiros/react-native-mask-input#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",

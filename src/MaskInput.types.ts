@@ -2,7 +2,7 @@ import type { TextInputProps } from 'react-native';
 
 import type { Mask } from './formatWithMask.types';
 
-export type MaskedTextInputProps = Omit<TextInputProps, 'onChangeText'> & {
+export type MaskInputProps = Omit<TextInputProps, 'onChangeText'> & {
   /**
    * Mask
    */
