@@ -16,13 +16,25 @@ A simple and effective Text Input with mask for ReactNative on iOS and Android. 
   <img src="https://media.giphy.com/media/6CUiN9vx6RjbZUBd2p/giphy.gif" />
 </p>
 
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Props](#props)
+- [Mask](#mask)
+- [Example](#example)
+- [formatWithMask](#formatwithmaskoptions)
+
+<br>
+
 ## Features
 
 - Highly custom masks with the use of `RegExp`
 - **Characteres obfuscation!**
 - It's just a [`<TextInput/>`](https://facebook.github.io/react-native/docs/textinput.html) component, as I said, no fancy stuff
 - Use React Native ES6 and React Hooks
-- Exports the function that do all the magic: [`formatWithMask`](#formatwithmask-options)
+- Exports the function that do all the magic: [`formatWithMask`](#formatwithmaskoptions)
+
+<br>
 
 ## Installation
 
@@ -35,6 +47,8 @@ or
 ```sh
 yarn add react-native-mask-input
 ```
+
+<br>
 
 ## Usage
 
@@ -76,6 +90,8 @@ function MyComponent() {
 }
 ```
 
+<br>
+
 ## Props
 
 | Prop                             | Type          | Default | Description                                                                                                                                                                                     |
@@ -87,6 +103,8 @@ function MyComponent() {
 | **`showObfuscatedValue`**        | boolean       | false   | Whether or not to display the obfuscated value on the `TextInput`.                                                                                                                              |
 | **`placeholderFillCharacter`\*** | string        | "\_"    | Character to be used as the "fill character" on the default placeholder value.                                                                                                                  |
 | **`obfuscationCharacter`**       | string        | "\*"    | Character to be used on the obfuscated characteres.                                                                                                                                             |
+
+<br>
 
 ## Mask
 
@@ -101,6 +119,8 @@ const mask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 ```
 
 That's because the RegExp `/\d/` accepts any digit character (0-9)
+
+<br>
 
 ## Example
 
