@@ -20,26 +20,18 @@ export default function App() {
         <Text style={styles.label}>MaskInput Examples</Text>
 
         <MaskInput
-          mask={Masks.BRL_CPF}
+          mask={Masks.BRL_CPF_CNPJ}
           value={cpf}
           onChangeText={setCpf}
           keyboardType="numeric"
+          placeholder="CPF/CNPJ"
           style={styles.inputBasic}
-        />
-
-        <MaskInput
-          mask={Masks.BRL_CNPJ}
-          keyboardType="numeric"
-          placeholderFillCharacter="0"
-          value={cnpj}
-          style={styles.inputBasic}
-          onChangeText={setCnpj}
         />
 
         <MaskInput
           mask={Masks.BRL_PHONE}
           keyboardType="numeric"
-          placeholder="Phone custom placeholder"
+          placeholderFillCharacter="0"
           value={phone}
           style={styles.inputBasic}
           onChangeText={setPhone}
