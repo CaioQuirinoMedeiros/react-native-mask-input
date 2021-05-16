@@ -3,8 +3,7 @@ import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native
 import MaskInput, { Masks } from 'react-native-mask-input';
 
 export default function App() {
-  const [cpf, setCpf] = React.useState('');
-  const [cnpj, setCnpj] = React.useState('');
+  const [cpfCnpj, setCpfCnpj] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [carPlate, setCarPlate] = React.useState('');
   const [creditCard, setCreditCard] = React.useState('');
@@ -21,8 +20,8 @@ export default function App() {
 
         <MaskInput
           mask={Masks.BRL_CPF_CNPJ}
-          value={cpf}
-          onChangeText={setCpf}
+          value={cpfCnpj}
+          onChangeText={setCpfCnpj}
           keyboardType="numeric"
           placeholder="CPF/CNPJ"
           style={styles.inputBasic}
