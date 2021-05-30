@@ -65,7 +65,7 @@ function MyComponent() {
   return (
     <MaskInput
       value={phone}
-      onChangeValue={(masked, unmasked, obfuscated) => {
+      onChangeText={(masked, unmasked, obfuscated) => {
         setPhone(masked); // you can use the unmasked value as well
 
         // assuming you typed "9" all the way:
@@ -147,7 +147,7 @@ function MyComponent() {
   return (
     <MaskInput
       value={phone}
-      onChangeValue={setValue}
+      onChangeText={setValue}
       mask={(text) => {
         // that's a nonsense example, sorry
         if (text.charAt(0) === '1') {
@@ -185,7 +185,7 @@ function MyComponent() {
     <MaskInput
       value={zipCode}
       mask={zipCodeMaskWithObfuscation}
-      onChangeValue={(masked, unmasked, obfuscated) => {
+      onChangeText={(masked, unmasked, obfuscated) => {
         setValue(unmasked); // you can use the masked value as well
 
         // assuming you typed "71680345":
@@ -211,7 +211,7 @@ function MyComponent() {
   return (
     <MaskInput
       value={creditCard}
-      onChangeValue={setCreditCard}
+      onChangeText={setCreditCard}
       mask={Masks.CREDIT_CARD}
     />
   );
@@ -250,7 +250,7 @@ function MyComponent() {
         separator: '.',
         precision: 2,
       })}
-      onChangeValue={(masked, unmasked, obfuscated) => {
+      onChangeText={(masked, unmasked, obfuscated) => {
         setValue(unmasked); // you can use the masked value as well
 
         // assuming you typed "123456":
