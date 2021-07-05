@@ -50,6 +50,8 @@
             ReferencedContainer = "container:MaskInputExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

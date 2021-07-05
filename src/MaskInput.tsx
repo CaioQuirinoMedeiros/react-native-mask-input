@@ -15,6 +15,7 @@ export default React.forwardRef(function (
     placeholderFillCharacter = '_',
     obfuscationCharacter,
     showObfuscatedValue,
+    selection,
     ...rest
   } = props;
 
@@ -32,11 +33,16 @@ export default React.forwardRef(function (
     [maskArray]
   );
 
+  const isValueObfuscated = React.useMemo(
+    () => !!maskHasObfuscation && !!showObfuscatedValue,
+    [maskHasObfuscation, showObfuscatedValue]
+  );
+
   const handleChangeText = React.useCallback(
     (text: string) => {
       let textToFormat = text;
 
-      if (maskHasObfuscation) {
+      if (isValueObfuscated) {
         textToFormat = formattedValueResult.masked || '';
 
         if (textToFormat.length > text.length) {
@@ -51,7 +57,7 @@ export default React.forwardRef(function (
       onChangeText && onChangeText(result.masked, result.unmasked, result.obfuscated);
     },
     [
-      maskHasObfuscation,
+      isValueObfuscated,
       mask,
       obfuscationCharacter,
       onChangeText,
@@ -75,15 +81,20 @@ export default React.forwardRef(function (
     }
   }, [maskArray, placeholderFillCharacter]);
 
+  const inputValue = isValueObfuscated
+    ? formattedValueResult.obfuscated
+    : formattedValueResult.masked;
+
   return (
     <TextInput
-      value={
-        showObfuscatedValue
-          ? formattedValueResult.obfuscated
-          : formattedValueResult.masked
-      }
       placeholder={defaultPlaceholder}
       {...rest}
+      value={inputValue}
+      selection={
+        isValueObfuscated
+          ? { start: inputValue.length, end: inputValue.length }
+          : selection
+      }
       onChangeText={handleChangeText}
       ref={ref}
     />

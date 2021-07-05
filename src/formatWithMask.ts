@@ -11,10 +11,7 @@ export default function formatWithMask(
     return {
       masked: text || '',
       unmasked: text || '',
-      obfuscated: (text || '')
-        .split('')
-        .map(() => obfuscationCharacter)
-        .join(''),
+      obfuscated: text || '',
     };
 
   let maskArray = typeof mask === 'function' ? mask(text) : mask;
