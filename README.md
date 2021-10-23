@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/github/license/CaioQuirinoMedeiros/react-native-mask-input" />
 </p>
 
-A simple and effective Text Input with mask for ReactNative on iOS and Android. No fancy stuff, it's basically a JavaScript function that allow you to use custom masks easily.
+A simple and effective Text Input with mask for ReactNative on iOS, Android, and Web. No fancy stuff, it's basically a JavaScript function that allow you to use custom masks easily.
 
 <p align="center">
   <img src="https://media.giphy.com/media/6CUiN9vx6RjbZUBd2p/giphy.gif" />
