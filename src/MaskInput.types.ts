@@ -2,7 +2,7 @@ import type { TextInputProps } from 'react-native';
 
 import type { Mask } from './formatWithMask.types';
 
-export type MaskInputProps = Omit<TextInputProps, 'onChangeText'> & {
+export interface MaskInputProps extends Omit<TextInputProps, 'onChangeText'> {
   /**
    * Mask
    */
@@ -35,4 +35,4 @@ export type MaskInputProps = Omit<TextInputProps, 'onChangeText'> & {
    * Character to be used on the obfuscated characteres. Defaults to "*"
    */
   obfuscationCharacter?: string;
-};
+}
