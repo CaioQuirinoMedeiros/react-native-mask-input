@@ -16,7 +16,7 @@ export type FormatWithMaskProps = {
   mask?: Mask;
 
   /**
-   * Character to be used on the obfuscated characteres. Defaults to "*"
+   * Character to be used on the obfuscated characteres. Defaults to `"*"`
    */
   obfuscationCharacter?: string;
 };

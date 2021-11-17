@@ -56,7 +56,7 @@ yarn add react-native-mask-input
 
 ## Usage
 
-```javascript
+```js
 import MaskInput from 'react-native-mask-input';
 
 function MyComponent() {
@@ -65,31 +65,14 @@ function MyComponent() {
   return (
     <MaskInput
       value={phone}
-      onChangeText={(masked, unmasked, obfuscated) => {
+      onChangeText={(masked, unmasked) => {
         setPhone(masked); // you can use the unmasked value as well
 
         // assuming you typed "9" all the way:
         console.log(masked); // (99) 99999-9999
         console.log(unmasked); // 99999999999
-        console.log(obfuscated); // (99) 99999-9999 (there's no obfuscation on this mask example)
       }}
-      mask={[
-        '(',
-        /\d/, // that's because I want it to be a digit (0-9)
-        /\d/,
-        ')',
-        ' ',
-        /\d/,
-        /\d/,
-        /\d/,
-        /\d/,
-        /\d/,
-        '-',
-        /\d/,
-        /\d/,
-        /\d/,
-        /\d/,
-      ]}
+      mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
     />
   );
 }
@@ -103,7 +86,7 @@ function MyComponent() {
 | ------------------------------ | ------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **...TextInputProps**          |               |         | Inherit all [props of `TextInput`](https://reactnative.dev/docs/textinput#props).                                                                                                               |
 | **`value`**                    | number        |         | The value for controlled input. **REQUIRED**                                                                                                                                                    |
-| **`onChangeText`**             | function      |         | Callback that is called when the input's text changes. differently of the default function, this one receive three arguments: `(maskedText, unmaskedText, obfuscatedText) => void` **REQUIRED** |
+| **`onChangeText`**             | function      |         | Callback that is called when the input's text changes. differently of the default function, this one receives three arguments: `(maskedText, unmaskedText, obfuscatedText) => void` **REQUIRED** |
 | **`mask`**                     | [Mask](#mask) |         | An array where each item defines one character of the value. If the item is a string, that string will be used, if it is an RegExp, it will validate the input on it.                           |
 | **`showObfuscatedValue`**      | boolean       | false   | Whether or not to display the obfuscated value on the `TextInput`.                                                                                                                              |
 | **`placeholderFillCharacter`** | string        | `_`     | Character to be used as the "fill character" on the default placeholder value.                                                                                                                  |
@@ -119,13 +102,15 @@ An array where each item defines one character of the value. If the item is a st
 
 If you want a mask for Zip Code, for example, you'd do like this:
 
-```javascript
+```js
 const zipCodeMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 ```
 
 That's because the RegExp `/\d/` accepts any digit character (0-9)
 
-```javascript
+```js
+import { formatWithMask } from 'react-native-mask-input'
+
 const { masked, unmasked, obfuscated } = formatWithMask({
   text: '71680345',
   mask: zipCodeMask,
@@ -140,20 +125,24 @@ console.log(obfuscated); // "71680-345"
 
 The mask can also be a function that receives the current value and returns the array mask. That's to help you to change the mask dynamically based on the value.
 
-```javascript
+```js
+import MaskInput from 'react-native-mask-input'
+
+const CPF_MASK = [/\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, "-", /\d/, /\d/]
+const CNPJ_MASK = [/\d/, /\d/, ".", /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, "/", /\d/, /\d/, /\d/, "-", /\d/, /\d/]
+
 function MyComponent() {
   const [value, setValue] = React.useState('');
 
   return (
     <MaskInput
-      value={phone}
+      value={value}
       onChangeText={setValue}
       mask={(text) => {
-        // that's a nonsense example, sorry
-        if (text.charAt(0) === '1') {
-          return [/\d/, '-', /\d/];
+        if (text.replace(/\D+/g, "").length <= 11) {
+          return CPF_MASK
         } else {
-          return [/\d/, '/', /\d/];
+          return CNPJ_MASK
         }
       }}
     />
@@ -165,44 +154,38 @@ function MyComponent() {
 
 To mark a character as obfuscated, use the `RegExp` within an array, like this:
 
-```javascript
-const zipCodeMaskWithObfuscation = [
-  /\d/,
-  /\d/,
-  [/\d/],
-  [/\d/],
-  [/\d/],
-  '-',
-  /\d/,
-  /\d/,
-  /\d/,
-];
+```js
+const creditCardMask = [/\d/, /\d/, /\d/, /\d/, " " [/\d/], [/\d/], [/\d/], [/\d/], " ", [/\d/], [/\d/], [/\d/], [/\d/], " ", /\d/, /\d/, /\d/, /\d/];
 
 function MyComponent() {
-  const [zipCode, setZipCode] = React.useState('');
+  const [creditCard, setCreditCard] = React.useState('');
 
   return (
     <MaskInput
-      value={zipCode}
-      mask={zipCodeMaskWithObfuscation}
+      value={creditCard}
+      mask={creditCardMask}
+      showObfuscatedValue
+      obfuscationCharacter="#"
       onChangeText={(masked, unmasked, obfuscated) => {
-        setValue(unmasked); // you can use the masked value as well
+        setCreditCard(unmasked); // you can use the masked value as well
 
-        // assuming you typed "71680345":
-        console.log(masked); // "71680-345"
-        console.log(unmasked); // "71680345"
-        console.log(obfuscated); // "71***-345"
+        // assuming you typed "1234123412341234":
+        console.log(masked); // "1234 1234 1234 1234"
+        console.log(unmasked); // "1234123412341234"
+        console.log(obfuscated); // "1234 #### #### 1234"
       }}
     />
   );
 }
 ```
 
+> You need to use the prop **showObfuscatedValue** in order to show the obfuscated value on the input
+
 ### Predefined Masks
 
 in order to perhaps help some of you, some commonly used masks are exported, if it does not fit your use case I hope it'll at least serve as an inspiration:
 
-```javascript
+```js
 import MaskInput, { Masks } from 'react-native-mask-input';
 
 function MyComponent() {
@@ -235,8 +218,15 @@ function MyComponent() {
 
 This is a helper function to create a number mask, you'd use this on currency input cases for example.
 
-```javascript
+```js
 import MaskInput, { createNumberMask } from 'react-native-mask-input';
+
+const dollarMask = createNumberMask({
+  prefix: ['U', '$', ' '],
+  delimiter: ',',
+  separator: '.',
+  precision: 2,
+})
 
 function MyComponent() {
   const [value, setValue] = React.useState('');
@@ -244,19 +234,13 @@ function MyComponent() {
   return (
     <MaskInput
       value={value}
-      mask={createNumberMask({
-        prefix: ['U', '$', ' '],
-        delimiter: ',',
-        separator: '.',
-        precision: 2,
-      })}
-      onChangeText={(masked, unmasked, obfuscated) => {
+      mask={dollarMask}
+      onChangeText={(masked, unmasked) => {
         setValue(unmasked); // you can use the masked value as well
 
         // assuming you typed "123456":
         console.log(masked); // "U$ 1,234.56"
         console.log(unmasked); // "123456"
-        console.log(obfuscated); // "U$ 1,234.56" (there's no obfuscation on the generated mask)
       }}
     />
   );
@@ -289,7 +273,7 @@ yarn android / yarn ios
 
 ## `formatWithMask(options)`
 
-```javascript
+```js
 import { formatWithMask, Masks } from 'react-native-mask-input';
 
 const creditCard = '9999999999999999';
