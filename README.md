@@ -222,9 +222,9 @@ This is a helper function to create a number mask, you'd use this on currency in
 import MaskInput, { createNumberMask } from 'react-native-mask-input';
 
 const dollarMask = createNumberMask({
-  prefix: ['U', '$', ' '],
-  delimiter: ',',
-  separator: '.',
+  prefix: ['R', '$', ' '],
+  delimiter: '.',
+  separator: ',',
   precision: 2,
 })
 
@@ -239,7 +239,7 @@ function MyComponent() {
         setValue(unmasked); // you can use the masked value as well
 
         // assuming you typed "123456":
-        console.log(masked); // "U$ 1,234.56"
+        console.log(masked); // "R$ 1.234,56"
         console.log(unmasked); // "123456"
       }}
     />
@@ -251,7 +251,7 @@ function MyComponent() {
 
 | Name            | Type          | Default         | Description                             |
 | --------------- | ------------- | --------------- | --------------------------------------- |
-| **`prefix`**    | [Mask](#mask) | ["R", "$", " "] | Mask to be prefixed on the mask result. |
+| **`prefix`**    | [Mask](#mask) | []              | Mask to be prefixed on the mask result. |
 | **`delimiter`** | string        | `.`             | Character for thousands delimiter.      |
 | **`separator`** | string        | `,`             | Decimal separator character.            |
 | **`precision`** | number        | 2               | Decimal precision.                      |
