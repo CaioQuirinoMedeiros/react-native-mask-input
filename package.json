@@ -1,6 +1,6 @@
 {
   "name": "react-native-mask-input",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "TextInput with mask for ReactNative on both iOS and Android. Includes obfuscation characters feature.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

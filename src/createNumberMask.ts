@@ -11,19 +11,23 @@ export default function createNumberMask(props?: CreateNumberMaskProps): Mask {
 
     let mask: MaskArray = numericValue.split('').map(() => /\d/);
 
-    if (mask.length > precision && precision && separator) {
+    const shouldAddSeparatorOnMask = precision > 0 && !!separator;
+
+    if (mask.length > precision && shouldAddSeparatorOnMask) {
       mask.splice(-precision, 0, separator);
     }
 
-    const delimiters = Math.ceil((numericValue.length - precision) / 3) - 1;
+    const amountOfDelimiters = Math.ceil((numericValue.length - precision) / 3) - 1;
 
     if (delimiter) {
-      for (let i = 0; i < delimiters; i++) {
+      for (let i = 0; i < amountOfDelimiters; i++) {
         const precisionOffset = precision;
-        const separatorOffset = separator ? 1 : 0;
+        const separatorOffset = shouldAddSeparatorOnMask ? 1 : 0;
         const thousandOffset = 3 + (delimiter ? 1 : 0);
-        const position = -precisionOffset - separatorOffset - i * thousandOffset - 3;
-        mask.splice(position, 0, delimiter);
+        const delimiterPosition =
+          -precisionOffset - separatorOffset - i * thousandOffset - 3;
+
+        mask.splice(delimiterPosition, 0, delimiter);
       }
     }
 
