@@ -1,5 +1,5 @@
 import createNumberMask from './createNumberMask';
-import type { MaskArray } from './formatWithMask.types';
+import type { Mask, MaskArray } from './formatWithMask.types';
 
 const BRL_CAR_PLATE = [/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/, '-', /\d/, /\w/, /\d/, /\d/];
 
@@ -93,9 +93,111 @@ const CREDIT_CARD = [
   /\d/,
 ] as MaskArray;
 
-const DATE_DDMMYYYY = [/[0-3]/, /\d/, '/', /[0-1]/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
-const DATE_MMDDYYYY = [/[0-1]/, /\d/, '/', /[0-3]/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
-const DATE_YYYYMMDD = [/\d/, /\d/, /\d/, /\d/, '/', /[0-1]/, /\d/, '/', /[0-3]/, /\d/];
+const DATE_DDMMYYYY: Mask = (text = '') => {
+  const cleanText = text.replace(/\D+/g, '');
+
+  let secondDigitDayMask = /\d/;
+
+  if (cleanText.charAt(0) === '0') {
+    secondDigitDayMask = /[1-9]/;
+  }
+  if (cleanText.charAt(0) === '3') {
+    secondDigitDayMask = /[01]/;
+  }
+
+  let secondDigitMonthMask = /\d/;
+
+  if (cleanText.charAt(2) === '0') {
+    secondDigitMonthMask = /[1-9]/;
+  }
+  if (cleanText.charAt(2) === '1') {
+    secondDigitMonthMask = /[012]/;
+  }
+
+  return [
+    /[0-3]/,
+    secondDigitDayMask,
+    '/',
+    /[0-1]/,
+    secondDigitMonthMask,
+    '/',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+  ];
+};
+
+const DATE_MMDDYYYY: Mask = (text = '') => {
+  const cleanText = text.replace(/\D+/g, '');
+
+  let secondDigitMonthMask = /\d/;
+
+  if (cleanText.charAt(0) === '0') {
+    secondDigitMonthMask = /[1-9]/;
+  }
+  if (cleanText.charAt(0) === '1') {
+    secondDigitMonthMask = /[012]/;
+  }
+
+  let secondDigitDayMask = /\d/;
+
+  if (cleanText.charAt(2) === '0') {
+    secondDigitDayMask = /[1-9]/;
+  }
+  if (cleanText.charAt(2) === '3') {
+    secondDigitDayMask = /[01]/;
+  }
+
+  return [
+    /[0-1]/,
+    secondDigitMonthMask,
+    '/',
+    /[0-3]/,
+    secondDigitDayMask,
+    '/',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+  ];
+};
+
+const DATE_YYYYMMDD: Mask = (text = '') => {
+  const cleanText = text.replace(/\D+/g, '');
+
+  let secondDigitMonthMask = /\d/;
+
+  if (cleanText.charAt(4) === '0') {
+    secondDigitMonthMask = /[1-9]/;
+  }
+  if (cleanText.charAt(4) === '1') {
+    secondDigitMonthMask = /[012]/;
+  }
+
+  let secondDigitDayMask = /\d/;
+
+  if (cleanText.charAt(6) === '0') {
+    secondDigitDayMask = /[1-9]/;
+  }
+  if (cleanText.charAt(6) === '3') {
+    secondDigitDayMask = /[01]/;
+  }
+
+  return [
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+    '/',
+    /[0-1]/,
+    secondDigitMonthMask,
+    '/',
+    /[0-3]/,
+    secondDigitDayMask,
+  ];
+};
+
 const ZIP_CODE = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
 export default {

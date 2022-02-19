@@ -27,6 +27,7 @@ A simple and effective Text Input with mask for ReactNative on iOS, Android, and
   - [createNumberMask](#createnumbermasknumberoptions)
 - [Example](#example)
 - [formatWithMask](#formatwithmaskoptions)
+- [useMaskedInputProps](#usemaskedinputpropsprops) (for any component integration)
 
 <br>
 
@@ -296,6 +297,27 @@ console.log(obfuscated); // 9999 ---- ---- 9999
 | **`text`**                 | string        |         | Text to be formatted with the mask.                                                                                                                                   |
 | **`mask`**                 | [Mask](#mask) |         | An array where each item defines one character of the value. If the item is a string, that string will be used, if it is an RegExp, it will validate the input on it. |
 | **`obfuscationCharacter`** | string        | `*`     | Character to be used on the obfuscated characteres.                                                                                                                   |
+
+<br>
+
+## `useMaskedInputProps(props)`
+
+```js
+import { Input } from 'native-base'
+import { Masks } from 'react-native-mask-input';
+
+function MyComponent() {
+  const [phone, setPhone] = React.useState('');
+
+  const maskedInputProps = useMaskedInputProps({
+    value: phone,
+    onChangeText: setPhone,
+    mask: Masks.BRL_PHONE,
+  });
+
+  return <Input {...maskedInputProps} />
+}
+```
 
 ## Contributing
 
