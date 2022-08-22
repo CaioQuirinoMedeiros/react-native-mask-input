@@ -53,6 +53,23 @@ const BRL_CURRENCY = createNumberMask({
   precision: 2,
 });
 
+const USA_PHONE = [
+  `(`,
+  /[2-9]/,
+  /\d/,
+  /\d/,
+  ')',
+  ' ',
+  /[2-9]/,
+  /\d/,
+  /\d/,
+  '-',
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+]
+
 const BRL_PHONE = [
   '(',
   /\d/,
