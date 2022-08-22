@@ -68,7 +68,7 @@ const USA_PHONE = [
   /\d/,
   /\d/,
   /\d/,
-]
+];
 
 const BRL_PHONE = [
   '(',
@@ -224,6 +224,7 @@ export default {
   BRL_CPF_CNPJ,
   BRL_CURRENCY,
   BRL_PHONE,
+  USA_PHONE,
   CREDIT_CARD,
   DATE_DDMMYYYY,
   DATE_MMDDYYYY,
