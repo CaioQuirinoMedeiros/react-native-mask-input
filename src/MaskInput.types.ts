@@ -9,9 +9,9 @@ export interface MaskInputProps extends Omit<TextInputProps, 'onChangeText'> {
   mask?: Mask;
 
   /**
-   * Required value for the controlled text input.
+   * Value for the controlled text input.
    */
-  value: string;
+  value?: string;
 
   /**
    * Callback that is called when the text input's text changes.
