@@ -3,7 +3,7 @@ import type { FormatWithMaskProps, FormatWithMaskResult } from './formatWithMask
 export default function formatWithMask(
   props: FormatWithMaskProps
 ): FormatWithMaskResult {
-  const { text, mask, obfuscationCharacter = '*' } = props;
+  const { text, mask, obfuscationCharacter = '*', maskAutoComplete = false } = props;
 
   // make sure it'll not break with null or undefined inputs
   if (!text) return { masked: '', unmasked: '', obfuscated: '' };
@@ -29,13 +29,20 @@ export default function formatWithMask(
       break;
     }
 
-    // if value is ended, break.
-    if (valueCharIndex === text.length) {
-      break;
-    }
-
     let maskChar = maskArray[maskCharIndex];
     let valueChar = text[valueCharIndex];
+
+    // if value is ended, break.
+    if (valueCharIndex === text.length) {
+      if (typeof maskChar === 'string' && maskAutoComplete) {
+        masked += maskChar;
+        obfuscated += maskChar;
+
+        maskCharIndex += 1;
+        continue;
+      }
+      break;
+    }
 
     // value equals mask: add to masked result and advance on both mask and value indexes
     if (maskChar === valueChar) {

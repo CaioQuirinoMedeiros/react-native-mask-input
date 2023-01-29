@@ -16,9 +16,17 @@ export type FormatWithMaskProps = {
   mask?: Mask;
 
   /**
-   * Character to be used on the obfuscated characteres. Defaults to `"*"`
+   * Character to be used on the obfuscated characters. Defaults to `"*"`
    */
   obfuscationCharacter?: string;
+
+  /** Add next mask characters at the end of the value. Defaults to `false`.
+   *
+   * Example: In a date mask, a input value of `"15/10"` will result:
+   * - When set to false: `"15/10"`
+   * - When set to true: `"15/10/"`
+   */
+  maskAutoComplete?: boolean;
 };
 
 export type FormatWithMaskResult = {

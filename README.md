@@ -31,6 +31,9 @@ A simple and effective Text Input with mask for ReactNative on iOS, Android, and
 
 <br>
 
+## :warning: Important note :warning:
+**If you are in need of a *CURRENCY* input in specific check out my other library [react-native-currency-input](https://github.com/CaioQuirinoMedeiros/react-native-currency-input)**
+
 ## Features
 
 - Highly customizable masks with the use of `RegExp`
@@ -92,6 +95,7 @@ function MyComponent() {
 | **`showObfuscatedValue`**      | boolean       | false   | Whether or not to display the obfuscated value on the `TextInput`.                                                                                                                              |
 | **`placeholderFillCharacter`** | string        | `_`     | Character to be used as the "fill character" on the default placeholder value.                                                                                                                  |
 | **`obfuscationCharacter`**     | string        | `*`     | Character to be used on the obfuscated characteres.                                                                                                                                             |
+| **`maskAutoComplete`**         | boolean       | false   | Add next mask characters at the end of the value |
 
 <br>
 

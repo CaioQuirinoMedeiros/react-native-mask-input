@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native';
-import MaskInput, { Masks } from 'react-native-mask-input';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  Text,
+} from 'react-native';
+import MaskInput, { Masks, useMaskedInputProps } from 'react-native-mask-input';
 
 export default function App() {
   const [cpfCnpj, setCpfCnpj] = React.useState('');
@@ -9,6 +15,13 @@ export default function App() {
   const [creditCard, setCreditCard] = React.useState('');
   const [money, setMoney] = React.useState('');
   const [date, setDate] = React.useState('');
+
+  const phoneMaskedInputProps = useMaskedInputProps({
+    value: phone,
+    onChangeText: setPhone,
+    mask: Masks.BRL_PHONE,
+    placeholderFillCharacter: '0',
+  });
 
   return (
     <KeyboardAvoidingView style={styles.screenContainer}>
@@ -27,13 +40,10 @@ export default function App() {
           style={styles.inputBasic}
         />
 
-        <MaskInput
-          mask={Masks.BRL_PHONE}
+        <TextInput
+          {...phoneMaskedInputProps}
           keyboardType="numeric"
-          placeholderFillCharacter="0"
-          value={phone}
           style={styles.inputBasic}
-          onChangeText={setPhone}
         />
 
         <MaskInput
@@ -52,6 +62,7 @@ export default function App() {
           keyboardType="numeric"
           value={date}
           style={styles.inputBasic}
+          maskAutoComplete
           onChangeText={setDate}
           maxLength={undefined}
         />

@@ -1,11 +1,9 @@
-import type { TextInputProps } from 'react-native';
-
 import type { Mask } from './formatWithMask.types';
 
-export interface MaskInputProps extends Omit<TextInputProps, 'onChangeText'> {
-  /**
-   * Mask
-   */
+export type UseMaskedInputProps = {
+  value?: string;
+
+  /** Mask */
   mask?: Mask;
 
   /**
@@ -16,19 +14,13 @@ export interface MaskInputProps extends Omit<TextInputProps, 'onChangeText'> {
    */
   onChangeText?(masked: string, unmasked: string, obfuscated: string): void;
 
-  /**
-   * Whether or not to display the obfuscated value on the `TextInput`. Defaults to false
-   */
+  /** Whether or not to display the obfuscated value on the `TextInput`. Defaults to false */
   showObfuscatedValue?: boolean;
 
-  /**
-   * Character to be used as the "fill character" on the default placeholder
-   */
+  /** Character to be used as the "fill character" on the default placeholder */
   placeholderFillCharacter?: string;
 
-  /**
-   * Character to be used on the obfuscated characteres. Defaults to "*"
-   */
+  /** Character to be used on the obfuscated characteres. Defaults to "*" */
   obfuscationCharacter?: string;
 
   /** Add next mask characters at the end of the value. Defaults to `false`.
@@ -38,4 +30,4 @@ export interface MaskInputProps extends Omit<TextInputProps, 'onChangeText'> {
    * - When set to true: `"15/10/"`
    */
   maskAutoComplete?: boolean;
-}
+};

@@ -1,16 +1,7 @@
 import * as React from 'react';
 
 import formatWithMask from './formatWithMask';
-import type { Mask } from './formatWithMask.types';
-
-type UseMaskedInputProps = {
-  value: string;
-  mask?: Mask;
-  onChangeText?(masked: string, unmasked: string, obfuscated: string): void;
-  showObfuscatedValue?: boolean;
-  placeholderFillCharacter?: string;
-  obfuscationCharacter?: string;
-};
+import type { UseMaskedInputProps } from './useMaskedInputProps.types';
 
 export default (props: UseMaskedInputProps) => {
   const {
@@ -20,6 +11,7 @@ export default (props: UseMaskedInputProps) => {
     placeholderFillCharacter = '_',
     obfuscationCharacter,
     showObfuscatedValue,
+    maskAutoComplete,
   } = props;
 
   const maskArray = React.useMemo(
@@ -55,7 +47,13 @@ export default (props: UseMaskedInputProps) => {
         }
       }
 
-      const result = formatWithMask({ text: textToFormat, mask, obfuscationCharacter });
+      const result = formatWithMask({
+        text: textToFormat,
+        mask,
+        obfuscationCharacter,
+        maskAutoComplete:
+          maskAutoComplete && textToFormat.length > formattedValueResult.masked.length,
+      });
 
       onChangeText && onChangeText(result.masked, result.unmasked, result.obfuscated);
     },
@@ -65,6 +63,7 @@ export default (props: UseMaskedInputProps) => {
       obfuscationCharacter,
       onChangeText,
       formattedValueResult.masked,
+      maskAutoComplete,
     ]
   );
 
