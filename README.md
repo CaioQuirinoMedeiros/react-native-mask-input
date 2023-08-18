@@ -285,7 +285,7 @@ import { formatWithMask, Masks } from 'react-native-mask-input';
 const creditCard = '9999999999999999';
 
 const { masked, unmasked, obfuscated } = formatWithMask({
-  text: phone,
+  text: creditCard,
   mask: Masks.CREDIT_CARD,
   obfuscationCharacter: '-',
 });
