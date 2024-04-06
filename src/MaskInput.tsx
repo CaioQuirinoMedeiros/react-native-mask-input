@@ -32,8 +32,8 @@ export default React.forwardRef(function (
 
   return (
     <TextInput
-      placeholder={maskedInputProps.placeholder}
       {...rest}
+      placeholder={props.placeholder || maskedInputProps.placeholder}
       selection={maskedInputProps.selection || selection}
       value={maskedInputProps.value}
       onChangeText={maskedInputProps.onChangeText}
