@@ -134,7 +134,7 @@ The mask can also be a function that receives the current value and returns the 
 import MaskInput from 'react-native-mask-input'
 
 const CPF_MASK = [/\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, "-", /\d/, /\d/]
-const CNPJ_MASK = [/\d/, /\d/, ".", /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, "/", /\d/, /\d/, /\d/, "-", /\d/, /\d/]
+const CNPJ_MASK = [/[a-zA-Z0-9]/, /[a-zA-Z0-9]/, ".", /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, ".", /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, "/", /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, /[a-zA-Z0-9]/, "-", /\d/, /\d/]
 
 function MyComponent() {
   const [value, setValue] = React.useState('');
