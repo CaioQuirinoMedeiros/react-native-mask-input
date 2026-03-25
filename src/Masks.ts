@@ -88,27 +88,43 @@ const BRL_PHONE = [
   /\d/,
 ];
 
-const CREDIT_CARD = [
-  /\d/,
-  /\d/,
-  /\d/,
-  /\d/,
-  ' ',
-  [/\d/],
-  [/\d/],
-  [/\d/],
-  [/\d/],
-  ' ',
-  [/\d/],
-  [/\d/],
-  [/\d/],
-  [/\d/],
-  ' ',
-  /\d/,
-  /\d/,
-  /\d/,
-  /\d/,
-] as MaskArray;
+const CREDIT_CARD: Mask = (value = '') => {
+  const digits = value.replace(/\D/g, '');
+
+  if (/^3[47]/.test(digits)) {
+    return [
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      ' ',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      ' ',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+    ];
+  }
+
+  const limited = digits.slice(0, 19);
+  const mask: MaskArray = [];
+
+  limited.split('').forEach((_, index) => {
+    if (index > 0 && index % 4 === 0) {
+      mask.push(' ');
+    }
+    mask.push(/\d/);
+  });
+
+  return mask;
+};
 
 const DATE_DDMMYYYY: Mask = (text = '') => {
   const cleanText = text.replace(/\D+/g, '');

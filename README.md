@@ -160,6 +160,7 @@ function MyComponent() {
 To mark a character as obfuscated, use the `RegExp` within an array, like this:
 
 ```js
+// Example with a 16-digit card (mask can be dynamic in real usage)
 const creditCardMask = [/\d/, /\d/, /\d/, /\d/, " " [/\d/], [/\d/], [/\d/], [/\d/], " ", [/\d/], [/\d/], [/\d/], [/\d/], " ", /\d/, /\d/, /\d/, /\d/];
 
 function MyComponent() {
@@ -206,19 +207,21 @@ function MyComponent() {
 }
 ```
 
-| Mask                | Use case                    |
-| ------------------- | --------------------------- |
-| Masks.BRL_CAR_PLATE | ABC-1234                    |
-| Masks.BRL_CPNJ      | 33.594.232/0001-00          |
-| Masks.BRL_CPF       | 903.549.000-21              |
-| Masks.BRL_CURRENCY  | R\$ 1.234,56                |
-| Masks.BRL_PHONE     | (61) 99966-7746             |
-| Masks.USA_PHONE     | (415) 555-0132              |
-| Masks.CREDIT_CARD   | 9999 \*\*\*\* \*\*\*\* 9999 |
-| Masks.DATE_DDMMYYYY | 12/04/1995                  |
-| Masks.DATE_MMDDYYYY | 04/12/1995                  |
-| Masks.DATE_YYYYMMDD | 1995/04/12                  |
-| Masks.ZIP_CODE      | 71680-345                   |
+Masks.CREDIT_CARD | 1234 5678 9012 3456 (15–19 digits, dynamic)
+
+| Mask                | Use case                                            |
+| ------------------- | --------------------------------------------------- |
+| Masks.BRL_CAR_PLATE | ABC-1234                                            |
+| Masks.BRL_CPNJ      | 33.594.232/0001-00                                  |
+| Masks.BRL_CPF       | 903.549.000-21                                      |
+| Masks.BRL_CURRENCY  | R\$ 1.234,56                                        |
+| Masks.BRL_PHONE     | (61) 99966-7746                                     |
+| Masks.USA_PHONE     | (415) 555-0132                                      |
+| Masks.CREDIT_CARD   | 9999 \*\*\*\* \*\*\*\* 9999 (15–19 digits, dynamic) |
+| Masks.DATE_DDMMYYYY | 12/04/1995                                          |
+| Masks.DATE_MMDDYYYY | 04/12/1995                                          |
+| Masks.DATE_YYYYMMDD | 1995/04/12                                          |
+| Masks.ZIP_CODE      | 71680-345                                           |
 
 ### `createNumberMask(numberOptions)`
 
@@ -282,7 +285,7 @@ yarn android / yarn ios
 ```js
 import { formatWithMask, Masks } from 'react-native-mask-input';
 
-const creditCard = '9999999999999999';
+const creditCard = '9999999999999999'; // 16 digits (example)
 
 const { masked, unmasked, obfuscated } = formatWithMask({
   text: creditCard,
